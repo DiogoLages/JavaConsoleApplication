@@ -74,7 +74,7 @@ public class CadastroImovelView {
 			System.out.println("\nImoveis: ");
 			for (int i = 0; i < imoveis.size(); i++) {
 				Imovel _imovel = imoveis.get(i);
-				System.out.println("\t" + (i + 1) + " - " + _imovel.getNome() + " - " + _imovel.getId());
+				System.out.println("\t" + (i + 1) + " - " + _imovel.getNome() + " - UUID: " + _imovel.getId() + " com valor: " + _imovel.getValor());
 			}
 			System.out.print("\nDigite o índice do imóvel: ");
 			int indice = teclado.nextInt() - 1;

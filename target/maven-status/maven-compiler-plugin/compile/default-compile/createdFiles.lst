@@ -4,6 +4,7 @@ br\com\diogolages\app\model\ComprometimentoException.class
 br\com\diogolages\app\model\Empresa.class
 br\com\diogolages\app\model\EstruturaSocietaria.class
 br\com\diogolages\app\model\PessoaFisica.class
+br\com\diogolages\app\service\ValidadorDocumentoService.class
 br\com\diogolages\app\App.class
 br\com\diogolages\app\model\Imovel.class
 br\com\diogolages\app\view\ListagemView.class

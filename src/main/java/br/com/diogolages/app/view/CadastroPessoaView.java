@@ -59,7 +59,7 @@ public class CadastroPessoaView {
 			System.out.println("\nEmpresas: ");
 			for (int i = 0; i < empresas.size(); i++) {
 				Empresa _empresa = empresas.get(i);
-				System.out.println("\t" + (i + 1) + " - " + _empresa.getRazaoSocial() + " - " + _empresa.getPessoa().getNumeroDocumento());
+				System.out.println("\t" + (i + 1) + " - " + _empresa.getPessoa().getNome() + " - Razão Social: " + _empresa.getRazaoSocial() + " - " + _empresa.getPessoa().getNumeroDocumento());
 			}
 			System.out.print("\nDigite o índice da empresa: ");
 			int indice = teclado.nextInt() - 1;
