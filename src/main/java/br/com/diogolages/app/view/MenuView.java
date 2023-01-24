@@ -2,6 +2,9 @@ package br.com.diogolages.app.view;
 
 import java.util.Scanner;
 
+import br.com.diogolages.app.util.Constantes;
+import br.com.diogolages.app.util.Utils;
+
 /**
  * 
  * @author Diogo Lages
@@ -50,38 +53,38 @@ public class MenuView {
 					listagemView.listarEmpresas(teclado);
 					break;
 				default:
-					System.out.println("Opção Inválida, selecione novamente\n");
+					Utils.imprimeDadosNaTelaLN("Opção Inválida, selecione novamente".concat(getMenu()).concat(Constantes.QUEBRA_DE_LINHA));
 					break;
 				}
 			} catch (RuntimeException e) {
-				System.out.println(e.getMessage());
+				Utils.imprimeDadosNaTelaLN(e.getMessage());
 			}
 			opcao = selecionarOpcao(teclado);
 		}
 		teclado.close();
-		System.out.println("Finalizado!");
+		Utils.imprimeDadosNaTelaLN("Finalizado!");
 	}
 
 	private int selecionarOpcao(Scanner teclado) {
 		System.out.print(getMenu());
 		int opcao = teclado.nextInt();
-		System.out.println("\n");
+		Utils.imprimeDadosNaTelaLN(Constantes.QUEBRA_DE_LINHA);
 		return opcao;
 	}
 	
 	
 	private String getMenu() {
-		return "#### Menu ####\n"
-				+"Digite uma opção:\n\t"
-				+ "1 - Criar Imóvel\n\t"
-				+ "2 - Criar Pessoa Física\n\t"
-				+ "3 - Criar Pessoa Jurídica-Empresa\n\t"
-				+ "4 - Vincular Imóvel\n\t"
-				+ "5 - Adicionar Sócio\n\t"
-				+ "6 - Calcular Comprometimento Financeiro\n\t"
-				+ "7 - Listar Empresas\n\t"
-				+ "0 - Finalizar\n\t"
-				+ "\n-> ";
+		return "#### Menu ####" + Constantes.QUEBRA_DE_LINHA
+				+"Digite uma opção: " + Constantes.QUEBRA_DE_LINHA_TABULACAO
+				+ "1 - Criar Imóvel" + Constantes.QUEBRA_DE_LINHA_TABULACAO
+				+ "2 - Criar Pessoa Física" + Constantes.QUEBRA_DE_LINHA_TABULACAO
+				+ "3 - Criar Pessoa Jurídica-Empresa" + Constantes.QUEBRA_DE_LINHA_TABULACAO
+				+ "4 - Vincular Imóvel" + Constantes.QUEBRA_DE_LINHA_TABULACAO
+				+ "5 - Adicionar Sócio" + Constantes.QUEBRA_DE_LINHA_TABULACAO
+				+ "6 - Calcular Comprometimento Financeiro" + Constantes.QUEBRA_DE_LINHA_TABULACAO
+				+ "7 - Listar Empresas" + Constantes.QUEBRA_DE_LINHA_TABULACAO
+				+ "0 - Finalizar" + Constantes.QUEBRA_DE_LINHA_TABULACAO
+				+ Constantes.QUEBRA_DE_LINHA + "--> ";
 	}
 	
 }

@@ -3,11 +3,13 @@ package br.com.diogolages.app.view;
 import java.util.List;
 import java.util.Scanner;
 
-import br.com.diogolages.app.model.ComprometimentoException;
+import br.com.diogolages.app.exception.ComprometimentoException;
 import br.com.diogolages.app.model.Empresa;
 import br.com.diogolages.app.model.EstruturaSocietaria;
 import br.com.diogolages.app.service.EstruturaService;
 import br.com.diogolages.app.service.FinanceiroService;
+import br.com.diogolages.app.util.Constantes;
+import br.com.diogolages.app.util.Utils;
 
 /**
  * 
@@ -23,29 +25,33 @@ public class ComprometimentoFinanceiroView {
 	static {
 		instance = new ComprometimentoFinanceiroView();
 	}
-	
+
 	public static ComprometimentoFinanceiroView getInstance() {
 		return instance;
 	}
-	
+
 	public ComprometimentoFinanceiroView() {
 		this.financeiroService = FinanceiroService.getInstance();
 		this.estruturaService = EstruturaService.getInstance();
 	}
-	
+
 	public void recuperarComprometimentoFinanceiro(Scanner teclado) {
 		List<Empresa> empresas = estruturaService.getEmpresas();
 		if (!empresas.isEmpty()) {
-			System.out.println("\nDigite o número da empresa para retornar o total: ");
+			Utils.imprimeDadosNaTelaLN(Constantes.QUEBRA_DE_LINHA.concat("Digite o número da empresa para retornar o total: "));
 			for (int i = 0; i < empresas.size(); i++) {
 				Empresa _empresa = empresas.get(i);
-				System.out.println("\t" + (i + 1) + " - " + _empresa.getRazaoSocial() + " - " + _empresa.getPessoa().getNumeroDocumento());
+				Utils.imprimeDadosNaTelaLN(Constantes.TABULAR + (i + 1) + Constantes.SEPARA + _empresa.getRazaoSocial()
+						+ Constantes.SEPARA + _empresa.getPessoa().getNumeroDocumento());
 			}
-			System.out.print("\nDigite o índice da empresa: ");
+			Utils.imprimeLinha(Constantes.QUEBRA_DE_LINHA.concat("Digite o índice da empresa: "));
 			int indice = teclado.nextInt() - 1;
 			if (indice >= 0 && indice < empresas.size()) {
 				Empresa empresa = empresas.get(indice);
-				System.out.println("O Comprometimento financeiro da empresa " + empresa.getRazaoSocial() + " é: " + financeiroService.comprometimentoFinanceiro(new EstruturaSocietaria(empresa)) + "\n");
+				Utils.imprimeDadosNaTelaLN(Constantes.QUEBRA_DE_LINHA.concat("O Comprometimento financeiro da empresa ")
+						.concat(empresa.getRazaoSocial()).concat(" é: ")
+								+ financeiroService.comprometimentoFinanceiro(new EstruturaSocietaria(empresa))
+								+ Constantes.QUEBRA_DE_LINHA);
 			} else {
 				throw new ComprometimentoException("Indice de imóvel inválido");
 			}
@@ -53,5 +59,5 @@ public class ComprometimentoFinanceiroView {
 			throw new ComprometimentoException("Nenhuma empresa cadastrada");
 		}
 	}
-	
+
 }

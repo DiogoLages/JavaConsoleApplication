@@ -5,7 +5,7 @@ import java.util.List;
 import br.com.caelum.stella.ValidationMessage;
 import br.com.caelum.stella.validation.CNPJValidator;
 import br.com.caelum.stella.validation.CPFValidator;
-import br.com.diogolages.app.model.ComprometimentoException;
+import br.com.diogolages.app.exception.ComprometimentoException;
 
 /**
  * @author Diogo Lages

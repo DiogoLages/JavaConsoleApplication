@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import br.com.diogolages.app.model.ComprometimentoException;
+import br.com.diogolages.app.exception.ComprometimentoException;
 import br.com.diogolages.app.model.Empresa;
 import br.com.diogolages.app.model.Imovel;
 import br.com.diogolages.app.model.Pessoa;

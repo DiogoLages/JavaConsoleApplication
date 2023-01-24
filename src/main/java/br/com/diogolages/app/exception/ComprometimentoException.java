@@ -1,4 +1,4 @@
-package br.com.diogolages.app.model;
+package br.com.diogolages.app.exception;
 
 /**
  * 
