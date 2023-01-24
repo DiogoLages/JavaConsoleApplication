@@ -9,7 +9,7 @@ import br.com.diogolages.app.model.EstruturaSocietaria;
 import br.com.diogolages.app.service.EstruturaService;
 import br.com.diogolages.app.service.FinanceiroService;
 import br.com.diogolages.app.util.Constantes;
-import br.com.diogolages.app.util.Utils;
+import br.com.diogolages.app.util.ImpressoraUtils;
 
 /**
  * 
@@ -38,17 +38,17 @@ public class ComprometimentoFinanceiroView {
 	public void recuperarComprometimentoFinanceiro(Scanner teclado) {
 		List<Empresa> empresas = estruturaService.getEmpresas();
 		if (!empresas.isEmpty()) {
-			Utils.imprimeDadosNaTelaLN(Constantes.QUEBRA_DE_LINHA.concat("Digite o número da empresa para retornar o total: "));
+			ImpressoraUtils.imprimeDadosNaTelaLN(Constantes.QUEBRA_DE_LINHA.concat("Digite o número da empresa para retornar o total: "));
 			for (int i = 0; i < empresas.size(); i++) {
 				Empresa _empresa = empresas.get(i);
-				Utils.imprimeDadosNaTelaLN(Constantes.TABULAR + (i + 1) + Constantes.SEPARA + _empresa.getRazaoSocial()
+				ImpressoraUtils.imprimeDadosNaTelaLN(Constantes.TABULAR + (i + 1) + Constantes.SEPARA + _empresa.getRazaoSocial()
 						+ Constantes.SEPARA + _empresa.getPessoa().getNumeroDocumento());
 			}
-			Utils.imprimeLinha(Constantes.QUEBRA_DE_LINHA.concat("Digite o índice da empresa: "));
+			ImpressoraUtils.imprimeLinha(Constantes.QUEBRA_DE_LINHA.concat("Digite o índice da empresa: "));
 			int indice = teclado.nextInt() - 1;
 			if (indice >= 0 && indice < empresas.size()) {
 				Empresa empresa = empresas.get(indice);
-				Utils.imprimeDadosNaTelaLN(Constantes.QUEBRA_DE_LINHA.concat("O Comprometimento financeiro da empresa ")
+				ImpressoraUtils.imprimeDadosNaTelaLN(Constantes.QUEBRA_DE_LINHA.concat("O Comprometimento financeiro da empresa ")
 						.concat(empresa.getRazaoSocial()).concat(" é: ")
 								+ financeiroService.comprometimentoFinanceiro(new EstruturaSocietaria(empresa))
 								+ Constantes.QUEBRA_DE_LINHA);

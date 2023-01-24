@@ -7,7 +7,7 @@ package br.com.diogolages.app.util;
  * @author Diogo Lages
  *
  */
-public class Utils {
+public class ImpressoraUtils {
 	
 	public static void imprimeDadosNaTelaLN(String s) {
 		System.out.println(s);

@@ -3,7 +3,7 @@ package br.com.diogolages.app.view;
 import java.util.Scanner;
 
 import br.com.diogolages.app.util.Constantes;
-import br.com.diogolages.app.util.Utils;
+import br.com.diogolages.app.util.ImpressoraUtils;
 
 /**
  * 
@@ -53,22 +53,22 @@ public class MenuView {
 					listagemView.listarEmpresas(teclado);
 					break;
 				default:
-					Utils.imprimeDadosNaTelaLN("Opção Inválida, selecione novamente".concat(getMenu()).concat(Constantes.QUEBRA_DE_LINHA));
+					ImpressoraUtils.imprimeDadosNaTelaLN("Opção Inválida, selecione novamente".concat(getMenu()).concat(Constantes.QUEBRA_DE_LINHA));
 					break;
 				}
 			} catch (RuntimeException e) {
-				Utils.imprimeDadosNaTelaLN(e.getMessage());
+				ImpressoraUtils.imprimeDadosNaTelaLN(e.getMessage());
 			}
 			opcao = selecionarOpcao(teclado);
 		}
 		teclado.close();
-		Utils.imprimeDadosNaTelaLN("Finalizado!");
+		ImpressoraUtils.imprimeDadosNaTelaLN("Finalizado!");
 	}
 
 	private int selecionarOpcao(Scanner teclado) {
 		System.out.print(getMenu());
 		int opcao = teclado.nextInt();
-		Utils.imprimeDadosNaTelaLN(Constantes.QUEBRA_DE_LINHA);
+		ImpressoraUtils.imprimeDadosNaTelaLN(Constantes.QUEBRA_DE_LINHA);
 		return opcao;
 	}
 	

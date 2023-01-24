@@ -10,7 +10,7 @@ import br.com.diogolages.app.model.Imovel;
 import br.com.diogolages.app.model.Pessoa;
 import br.com.diogolages.app.service.EstruturaService;
 import br.com.diogolages.app.util.Constantes;
-import br.com.diogolages.app.util.Utils;
+import br.com.diogolages.app.util.ImpressoraUtils;
 
 /**
  * 
@@ -35,12 +35,12 @@ public class CadastroImovelView {
 	}
 
 	public void cadastrarImovel(Scanner teclado) {
-		Utils.imprimeLinha("Informe o nome do imóvel: ");
+		ImpressoraUtils.imprimeLinha("Informe o nome do imóvel: ");
 		String nomeImovel = teclado.nextLine();
-		Utils.imprimeLinha("Informe o valor do imóvel: ");
+		ImpressoraUtils.imprimeLinha("Informe o valor do imóvel: ");
 		Double valorImovel = teclado.nextDouble();
 		Imovel imovel = service.criarImovel(nomeImovel, valorImovel);
-		Utils.imprimeDadosNaTelaLN("Imóvel cadastrado com sucesso, Nome: ".concat(imovel.getNome()).concat(", ID: [")
+		ImpressoraUtils.imprimeDadosNaTelaLN("Imóvel cadastrado com sucesso, Nome: ".concat(imovel.getNome()).concat(", ID: [")
 				.concat(imovel.getId()).concat("], no valor de: ") + imovel.getValor() + Constantes.QUEBRA_DE_LINHA);
 	}
 
@@ -49,14 +49,14 @@ public class CadastroImovelView {
 		if (!pessoas.isEmpty()) {
 			Pessoa pessoa = null;
 			Imovel imovel = null;
-			Utils.imprimeDadosNaTelaLN("Pessoas:");
+			ImpressoraUtils.imprimeDadosNaTelaLN("Pessoas:");
 
 			for (int i = 0; i < pessoas.size(); i++) {
 				Pessoa p = pessoas.get(i);
-				Utils.imprimeDadosNaTelaLN(Constantes.TABULAR + (i + 1) + Constantes.SEPARA.concat(p.getNome())
+				ImpressoraUtils.imprimeDadosNaTelaLN(Constantes.TABULAR + (i + 1) + Constantes.SEPARA.concat(p.getNome())
 						.concat(Constantes.SEPARA).concat(p.getNumeroDocumento()));
 			}
-			Utils.imprimeLinha(Constantes.QUEBRA_DE_LINHA.concat("Digite o índice da pessoa: "));
+			ImpressoraUtils.imprimeLinha(Constantes.QUEBRA_DE_LINHA.concat("Digite o índice da pessoa: "));
 
 			int indice = teclado.nextInt() - 1;
 			if (indice >= 0 && indice < pessoas.size()) {
@@ -66,7 +66,7 @@ public class CadastroImovelView {
 				throw new ComprometimentoException("Indice de imóvel inválido".concat(Constantes.QUEBRA_DE_LINHA));
 			}
 			service.adicionarImovel(pessoa, imovel);
-			Utils.imprimeDadosNaTelaLN("Imovém vinculado com sucesso".concat(Constantes.QUEBRA_DE_LINHA));
+			ImpressoraUtils.imprimeDadosNaTelaLN("Imovém vinculado com sucesso".concat(Constantes.QUEBRA_DE_LINHA));
 		} else {
 			throw new ComprometimentoException("Nenhuma pessoa cadastrada".concat(Constantes.QUEBRA_DE_LINHA));
 		}
@@ -78,13 +78,13 @@ public class CadastroImovelView {
 				.collect(Collectors.toList());
 		if (!imoveis.isEmpty()) {
 			Imovel imovel = null;
-			Utils.imprimeDadosNaTelaLN(Constantes.QUEBRA_DE_LINHA.concat("Imoveis: "));
+			ImpressoraUtils.imprimeDadosNaTelaLN(Constantes.QUEBRA_DE_LINHA.concat("Imoveis: "));
 			for (int i = 0; i < imoveis.size(); i++) {
 				Imovel _imovel = imoveis.get(i);
-				Utils.imprimeDadosNaTelaLN(Constantes.TABULAR + (i + 1) + Constantes.SEPARA.concat(_imovel.getNome())
+				ImpressoraUtils.imprimeDadosNaTelaLN(Constantes.TABULAR + (i + 1) + Constantes.SEPARA.concat(_imovel.getNome())
 						.concat(" - UUID: ").concat(_imovel.getId()).concat(" com valor: ") + _imovel.getValor());
 			}
-			Utils.imprimeLinha(Constantes.QUEBRA_DE_LINHA.concat("Digite o índice do imóvel: "));
+			ImpressoraUtils.imprimeLinha(Constantes.QUEBRA_DE_LINHA.concat("Digite o índice do imóvel: "));
 			int indice = teclado.nextInt() - 1;
 			if (indice >= 0 && indice < imoveis.size()) {
 				imovel = imoveis.get(indice);

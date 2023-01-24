@@ -7,7 +7,7 @@ import br.com.diogolages.app.exception.ComprometimentoException;
 import br.com.diogolages.app.model.Empresa;
 import br.com.diogolages.app.service.EstruturaService;
 import br.com.diogolages.app.util.Constantes;
-import br.com.diogolages.app.util.Utils;
+import br.com.diogolages.app.util.ImpressoraUtils;
 
 /**
  * 
@@ -35,20 +35,20 @@ public class ListagemView {
 		List<Empresa> empresas = estruturaService.getEmpresas();
 		if (!empresas.isEmpty()) {
 			empresas.forEach(e -> {
-				Utils.imprimeDadosNaTelaLN("Empresa: ".concat(e.getPessoa().getNome()).concat(Constantes.SEPARA)
+				ImpressoraUtils.imprimeDadosNaTelaLN("Empresa: ".concat(e.getPessoa().getNome()).concat(Constantes.SEPARA)
 						.concat(" Razão Social: ").concat(e.getRazaoSocial()));
-				Utils.imprimeDadosNaTelaLN(Constantes.TABULAR.concat("Imóveis: "));
+				ImpressoraUtils.imprimeDadosNaTelaLN(Constantes.TABULAR.concat("Imóveis: "));
 				e.getPessoa().getImoveis().forEach(i -> {
-					Utils.imprimeDadosNaTelaLN(
+					ImpressoraUtils.imprimeDadosNaTelaLN(
 							Constantes.TABULAR_2X.concat(i.getNome()).concat(Constantes.SEPARA) + i.getValor());
 				});
-				Utils.imprimeDadosNaTelaLN(Constantes.TABULAR_2X.concat(" Sócios: "));
+				ImpressoraUtils.imprimeDadosNaTelaLN(Constantes.TABULAR_2X.concat(" Sócios: "));
 				e.getSocios().forEach(s -> {
-					Utils.imprimeDadosNaTelaLN(Constantes.TABULAR_3X.concat(s.getNome()).concat(Constantes.SEPARA)
+					ImpressoraUtils.imprimeDadosNaTelaLN(Constantes.TABULAR_3X.concat(s.getNome()).concat(Constantes.SEPARA)
 							.concat(s.getNumeroDocumento()));
-					Utils.imprimeDadosNaTelaLN(Constantes.TABULAR_4X.concat(" Imóveis: "));
+					ImpressoraUtils.imprimeDadosNaTelaLN(Constantes.TABULAR_4X.concat(" Imóveis: "));
 					s.getImoveis().forEach(i -> {
-						Utils.imprimeDadosNaTelaLN(
+						ImpressoraUtils.imprimeDadosNaTelaLN(
 								Constantes.TABULAR_5X.concat(i.getNome()).concat(Constantes.SEPARA) + i.getValor());
 					});
 				});
